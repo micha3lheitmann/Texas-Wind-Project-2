@@ -43,8 +43,8 @@ function goBack() {
 
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 40, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 1200 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
 
 // parse the date / time
 var parseTime = d3.timeParse("%d-%b-%y");
@@ -78,6 +78,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+          
 
 // Get the data
 d3.csv("data4.csv", function(error, data) {
@@ -153,7 +154,7 @@ d3.csv("data4.csv", function(error, data) {
         .text("realtime $");     
 
     svg.append("text")      // text label for the x axis
-        .attr("x", 870 )
+        .attr("x", 1100 )
         .attr("y", -5 )
         .style("text-anchor", "middle")
         .style("font-size", "15px") 
