@@ -21,6 +21,8 @@
 }
 
 </style>
+
+
 <body>
   <!-- <button onclick="goBack()">Go Back</button>
 
@@ -29,6 +31,21 @@ function goBack() {
   window.history.back();
 } -->
 </script>
+
+<!-- Dropdown button -->
+<!-- <br><br><br><br>
+<select>
+  <option value="o1">Option 1</option>
+  <option value="o2">Option 2</option>
+  <option value="o3">Option 3</option>
+  <option value="o4">Whatever</option>
+</select> -->
+<!-- File picker -->
+<!-- <br><br><br><br><br><br><br>
+<input type="file" name="usrname"> -->
+
+<!-- Initialize a select button -->
+<!-- <select id="selectButton"></select> -->
 
     <div id="linechart">
 		<div class="row">
@@ -63,7 +80,7 @@ var valueline = d3.line()
 // define the 2nd line
 var valueline2 = d3.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y1(d.PanWind); });
+    .y(function(d) { return y1(d.PanWind); });x 
   
 var valueline3 = d3.line()
     .x(function(d) { return x(d.date); })
@@ -84,11 +101,24 @@ var svg = d3.select("body").append("svg")
 d3.csv("data4.csv", function(error, data) {
   if (error) throw error;
 
+  var allGroup = ["valueA", "valueB", "valueC"]
+
+    // add the options to the button
+    d3.select("#selectButton")
+      .selectAll('myOptions')
+     	.data(allGroup)
+      .enter()
+    	.append('option')
+      .text(function (d) { return d; }) // text showed in the menu
+      .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+
   // format the data
   data.forEach(function(d) {
       d.date = parseTime(d.date);
       d.PanRT = +d.PanRT;
       d.PanWind = +d.PanWind;
+      d.ErcotWind = +d.ErcotWind;
   });
 
   // Scale the range of the data
@@ -159,6 +189,8 @@ d3.csv("data4.csv", function(error, data) {
         .style("text-anchor", "middle")
         .style("font-size", "15px") 
         .text("average wind gen");    
+
+        
 });
 
 </script>
