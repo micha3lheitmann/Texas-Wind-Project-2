@@ -24,7 +24,7 @@ var chart = svg.append("g");
 d3.select(".chart").append("div").attr("class", "tooltip").style("opacity", 0);
 
 // Retrieve data from the CSV file and execute everything below
-d3.csv("scatter.csv", function(err, myData) {
+d3.csv("scatter3.csv", function(err, myData) {
   if (err) throw err;
 
   myData.forEach(function(data) {
@@ -37,6 +37,7 @@ d3.csv("scatter.csv", function(err, myData) {
 
   // Create scale functions
   var yLinearScale = d3.scaleLinear().range([height, 0]);
+
 
   var xLinearScale = d3.scaleSqrt().clamp(true).range([0, width]);
 
@@ -128,8 +129,8 @@ d3.csv("scatter.csv", function(err, myData) {
     .attr("cy", function(data, index) {
       return yLinearScale(Number(data.Wind));
     })
-    .attr("r", "10")
-    .attr("fill", "lightpink")
+    .attr("r", "4")
+    .attr("fill", "lightgreen")
     .attr('opacity', '.5')
 
     // Both circle and text instances have mouseover & mouseout event handlers
@@ -195,7 +196,7 @@ d3.csv("scatter.csv", function(err, myData) {
     // This axis label is active by default
     .attr("class", "axis-text active")
     .attr("data-axis-name", "DA")
-    .text("DART spread");
+    .text("North DART spread");
 
   chart
     .append("text")
@@ -206,7 +207,7 @@ d3.csv("scatter.csv", function(err, myData) {
     // This axis label is inactive by default
     .attr("class", "axis-text inactive")
     .attr("data-axis-name", "RT")
-    .text("Constraint Level");
+    .text("Panhandle DART spread");
 
   // Change an axis's status from inactive to active when clicked (if it was inactive)
   // Change the status of all active axes to inactive otherwise
@@ -287,8 +288,8 @@ function writeAnalysis(xAxis, yAxis) {
 
   
 
-  var responses = ["Clusters hours 18 - 24 in the negative spread range are significant",
-                  "Constraint levels are grouped with a slight correlation to off peak hours"];
+  var responses = ["A negative $3000 to positive $8000 dollar price move can make or break a Fortune 500 company",
+                  "All Outliers are between the hours of 14 and 19 - Clustered groups see all the congestion"];
 
   var answer;
 
