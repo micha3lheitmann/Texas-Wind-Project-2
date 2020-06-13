@@ -129,7 +129,7 @@ d3.csv("scatter.csv", function(err, myData) {
       return yLinearScale(Number(data.Wind));
     })
     .attr("r", "10")
-    .attr("fill", "lightpink")
+    .attr("fill", "lightblue")
     .attr('opacity', '.5')
 
     // Both circle and text instances have mouseover & mouseout event handlers
